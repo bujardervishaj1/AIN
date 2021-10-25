@@ -4,20 +4,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
-
-    public static void main(String[] args) {
-        List<List<Integer>> ans = permute(new int[]{1,2,3});
-    }
-
-    public static List<List<Integer>> permute (int[] arr){
+	public static List<List<Integer>> per (int[] arr){
         List<List<Integer>> ans = new ArrayList<>();
-        permute(arr, 0,ans);
+        per(arr, 0,ans);
         return  ans;
     }
-    private static void permute(int[] arr, int k,List<List<Integer>> ans){
+    private static void per(int[] arr, int k,List<List<Integer>> ans){
         for(int i = k; i < arr.length; i++){
             swap(arr, i, k);
-            permute(arr, k+1,ans);
+            per(arr, k+1,ans);
             swap(arr, k, i);
         }
         if (k == arr.length -1){
@@ -31,4 +26,7 @@ public class Main {
         arr[j] = temp;
     }
 
+    public static void main(String[] args) {
+        List<List<Integer>> ans = per(new int[]{1,2,3});
+    }
 }
